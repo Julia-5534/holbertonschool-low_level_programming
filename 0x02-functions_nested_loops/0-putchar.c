@@ -1,7 +1,7 @@
-#include "main.h"
+#include "main.c"
 
 /**
- * main - prints putchar
+ * main - print _putchar, followed by new line
  * Return: 0
  */
 
