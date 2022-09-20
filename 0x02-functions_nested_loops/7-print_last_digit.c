@@ -1,17 +1,16 @@
 #include "main.h"
 
 /**
- * print_last_digit - print last digit of integer
- * @n: integer argument
- * Return: last digit of number
+ * _isalpha(int c)- checks for lowercase or uppercase
+ * @a: The character to check
+ *
+ * Return: 1 (Success)
  */
 
-int print_last_digit(int n)
+int _isalpha(int a)
 {
-	if (n < 0)
-		n *= -1;
-
-	_putchar('0' + (n % 10));
-
-	return (n % 10);
+	if ((a < 'z' && a > 'a') || (a < 'Z' && a > 'A'))
+	return (1);
+	else
+	return (0);
 }
