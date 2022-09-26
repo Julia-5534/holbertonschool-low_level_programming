@@ -2,20 +2,21 @@
 
 /**
  * more_numbers - prints 10 lines of numbers 1-14, followed by new line
- * Return: VOID
+ * Return: Void
  */
 
 void more_numbers(void)
 {
-	int i = 0, z = 0;
+	char i;
+	int counter;
 
-	for (i = 0; i < 10; i++)
+	for (counter = 1; counter <= 10; counter++)
 	{
-		for (z = 0; z <= 14; z++)
+		for (i = 0; i <= 14; i++)
 		{
-			if (z >= 10)
-				_putchar('1');
-			_putchar((z % 10) + '0')
+			if (i / 10 > 0)
+				_putchar((i / 10) + '0');
+			_putchar((i % 10) + '0');
 		}
 		_putchar('\n');
 	}
