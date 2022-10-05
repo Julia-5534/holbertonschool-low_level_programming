@@ -29,17 +29,17 @@ char *_strstr(char *haystack, char *needle)
 		a = haystack;
 
 		while (1)
+		{
+			if (*b == 0)
 			{
-				if (*b == 0)
-				{
-					return ((char *) (haystack));
-				}
-				if (*a++ != *b++)
-				{
-					break;
-				}
+				return ((char *) (haystack));
 			}
-			b = needle;
+			if (*a++ != *b++)
+			{
+				break;
+			}
+		}
+		b = needle;
 	}
 	return ('\0');
 }
