@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "main.h"
 
 /**
  * main - print each argument passed to program on a line
@@ -7,10 +8,10 @@
  * Return (0): Always
  */
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[] __attribute__((unused)))
 {
-	(void)argv;
+	if (argc > 0)
+		printf("%d\n", argc - 1);
 
-	printf("%d\n", argc - 1);
 	return (0);
 }
