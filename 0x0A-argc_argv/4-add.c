@@ -1,8 +1,9 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 /**
- * main: adds positive numbers
+ * main - adds positive number
  * @argc: number of arguments
  * @argv: argument vector
  * Return: 1 non digit argument; 0 otherwise
