@@ -1,5 +1,4 @@
 #include "main.h"
-#include "_strchr.c"
 
 /**
  * _strspn - prototype for function
