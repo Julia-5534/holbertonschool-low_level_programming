@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * main - adds positive numbers
+ * main: adds positive numbers
  * @argc: number of arguments
  * @argv: argument vector
  * Return: 1 non digit argument; 0 otherwise
@@ -26,13 +26,11 @@ int main(int argc, char **argv)
 			}
 			j++;
 		}
-		
 		if (atoi(argv[i]) > 0)
 			sum += atoi(argv[i]);
 		j++;
 	}
-	
 	printf("%d\n", sum);
-	
+
 	return (0);
 }
