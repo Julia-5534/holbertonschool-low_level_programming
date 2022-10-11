@@ -1,5 +1,4 @@
 #include "main.h"
-#include "_strchr.c"
 
 /**
  * _strpbrk - scan to find first char in str matching in str accept
