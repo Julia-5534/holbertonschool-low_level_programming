@@ -5,7 +5,7 @@
  * main - adds positive numbers
  * @argc: number of arguments
  * @argv: argument vector
- * Return: 1 if arguments contain symbols that are not digits; 0 otherwise
+ * Return: 1 non digit argument; 0 otherwise
  */
 
 int main(int argc, char **argv)
