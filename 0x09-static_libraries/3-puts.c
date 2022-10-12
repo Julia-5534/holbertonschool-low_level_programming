@@ -2,13 +2,11 @@
 
 /**
  * _puts - prints a string, followed by a new line, to stdout
- * @str: string
+ * @c: string
+ * Return: Success
  */
 
-void _puts(char *str)
+void _puts(char c)
 {
-	while (*str != '\0')
-		_putchar(*str++);
-
-	_putchar('\n');
+	return (write(1, &c, 1));
 }
