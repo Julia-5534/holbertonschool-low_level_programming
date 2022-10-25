@@ -4,6 +4,9 @@
 /*Libraries*/
 #include <stdarg.h>
 #include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
 
 /*Prototypes*/
 int sum_them_all(const unsigned int n, ...);
