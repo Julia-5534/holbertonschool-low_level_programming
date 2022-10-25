@@ -14,9 +14,10 @@
 
 struct dog
 {
+	/*Data*/
 	char *name;
 	float age;
 	char *owner;
-};
+}
 
 #endif
