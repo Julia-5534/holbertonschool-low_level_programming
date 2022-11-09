@@ -25,7 +25,7 @@ list_t *add_node_end(list_t **head, const char *str)
 	{
 		while (toot->next)
 			toot = toot->next;
-			
+
 		toot->next = boopNode;
 	}
 
