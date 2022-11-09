@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>
 
 /**
  * binary_to_uint - Converts binary number to unsigned int
@@ -25,7 +26,7 @@ unsigned int binary_to_uint(const char *b)
 			return (0);
 		if (b[i] == '1')
 			value += base;
-			base = base * 2;
+		base = base * 2;
 	}
 	return (value);
 }
