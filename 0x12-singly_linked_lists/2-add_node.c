@@ -1,20 +1,6 @@
 #include "lists.h"
 
 /**
- * _strlen - find string length
- * @str: string
- * Return: length
- */
-
-int _strlen(const char *str)
-{
-	int len;
-
-	for (len = 0; str[len] != '\0'; len++);
-		return (len);
-}
-
-/**
  * add_node - add node to beginning of linked list
  * @head: linked list
  * @str: data for new node
@@ -23,7 +9,7 @@ int _strlen(const char *str)
 
 list_t *add_node(list_t **head, const char *str)
 {
-	list_t *newNode;
+	list_t *boopNode;
 
 	boopNode = malloc(sizeof(list_t));
 
