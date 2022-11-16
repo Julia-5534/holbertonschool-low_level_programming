@@ -1,53 +1,43 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_set - adds an element to a hash table
- * @ht: hash table to add to
- * @key: key to be added
- * @value: value to be added
- * Return: 1 on success, 0 otherwise
+ * hash_table_set - function that adds ele to htable
+ * @ht: htable to add kv to
+ * @key: key to be added OR HAVE VALUE UPDATED
+ * @value: value paired w key
+ * Return: 1 on success 0 on failure
  */
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int idx;
-	hash_node_t *newNode, *current;
+	hash_node_t *newNode;
+	unsigned long int hKey, index, i;
 
-	if (!ht || !key || strcmp(key, "\0") == 0)
-		return (0);
-
-	idx = key_index((const unsigned char *)key, ht->size);
-	current = ht->array[idx];
-
-	newNode = malloc(sizeof(hash_node_t));
-	if (!newNode)
-		return (0);
-	newNode->key = strdup(key);
-	newNode->value = strdup(value);
-	newNode->next = NULL;
-	if (current)
+	if (!(ht) || !(key) || !(value) || (!(key[0])))
 	{
-		if (strcmp(current->key, key) == 0)
+		return (0);
+	}
+	newNode = malloc(sizeof(hash_node_t));
+	if (!(newNode))
+	{
+		return (0);
+	}
+	hKey = hash_djb2((const unsigned char *)key);
+	index = hKey % ht->size;
+	/* check if key already exists and if so update its value pair */
+	for (i = index; ht->array[i]; i++)
+	{
+		if (!(strcmp(key, ht->array[i]->key)))
 		{
-			newNode->next = current;
-			ht->array[idx] = newNode;
+			free(newNode);
+			ht->array[i]->value = strdup(value);
 			return (1);
 		}
-		while (current->next)
-		{
-			if (strcmp(current->next->key, key) == 0)
-			{
-				newNode->next = current->next->next;
-				free(current->next->key), free(current->next->value), free(current->next);
-				current->next = newNode;
-				return (1);
-			}
-			current = current->next;
-		}
-		newNode->next = ht->array[idx];
-		ht->array[idx] = newNode;
-		return (1);
 	}
-	ht->array[idx] = newNode;
+	/* populate new node and make first in array */
+	newNode->key = strdup(key);
+	newNode->value = strdup(value);
+	newNode->next = ht->array[index];
+	ht->array[index] = newNode;
 	return (1);
 }
