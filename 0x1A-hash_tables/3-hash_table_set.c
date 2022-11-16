@@ -1,43 +1,32 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_set - function that adds ele to htable
- * @ht: htable to add kv to
- * @key: key to be added OR HAVE VALUE UPDATED
- * @value: value paired w key
- * Return: 1 on success 0 on failure
+ * hash_table_set - creates a new node in a hash table
+ * @ht: the hash table
+ * @key: the key used to index the new node
+ * @value: the value to be copied into the new node
+ * Return: 1 on success, 0 on error
  */
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *newNode;
-	unsigned long int hKey, index, i;
+	hash_node_t *new;
+	unsigned long index;
 
-	if (!(ht) || !(key) || !(value) || (!(key[0])))
-	{
+	if (ht == NULL || key == NULL || value == NULL)
 		return (0);
-	}
-	newNode = malloc(sizeof(hash_node_t));
-	if (!(newNode))
-	{
+
+	index = key_index((const unsigned char *)key, ht->size);
+
+	new = malloc(sizeof(hash_node_t));
+
+	if (new == NULL)
 		return (0);
-	}
-	hKey = hash_djb2((const unsigned char *)key);
-	index = hKey % ht->size;
-	/* check if key already exists and if so update its value pair */
-	for (i = index; ht->array[i]; i++)
-	{
-		if (!(strcmp(key, ht->array[i]->key)))
-		{
-			free(newNode);
-			ht->array[i]->value = strdup(value);
-			return (1);
-		}
-	}
-	/* populate new node and make first in array */
-	newNode->key = strdup(key);
-	newNode->value = strdup(value);
-	newNode->next = ht->array[index];
-	ht->array[index] = newNode;
+
+	new->key = strdup(key);
+	new->value = strdup(value);
+	new->next = ht->array[index];
+	ht->array[index] = new;
+
 	return (1);
 }
